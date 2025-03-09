@@ -1,28 +1,32 @@
 package com.kh.mybatis.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-import com.kh.mybatis.board.model.vo.Board;
+import com.kh.mybatis.board.model.vo.Reply;
 import com.kh.mybatis.board.service.BoardService;
 import com.kh.mybatis.board.service.BoardServiceImpl;
+import com.kh.mybatis.member.model.vo.Member;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class BoardDetailFormController
+ * Servlet implementation class ReplyListController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailFormController extends HttpServlet {
+@WebServlet("/selectList.re")
+public class ReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailFormController() {
+    public ReplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +36,18 @@ public class BoardDetailFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		
 		BoardService boardService = new BoardServiceImpl();
-		 
-		Board b = boardService.selectOneBoard(bno);
+		HashMap<String, String> map = new HashMap<>();
+		HttpSession session = request.getSession();
 		
-	
 		
-		request.setAttribute("board", b);
-		request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
+		map.put("userId", ((Member)session.getAttribute("loginUser")).getUserId());
+		map.put("boardNo", request.getParameter("boardNo"));
 		
+		
+		ArrayList<Reply> list = boardService.selectReplyList(map);
+		
+		response.getWriter().println(list);
 		
 	}
 

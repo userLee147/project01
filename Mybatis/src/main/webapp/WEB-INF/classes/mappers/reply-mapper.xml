@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReplyMapper">
+	<!-- 
+		*SELECT문 사용시
+		<select id="각 sql문 식별자" [parameterType="전달받을 객체타입"] resultMap="직접맵핑한resultMap의 id" | resultType="결과타입(별칭)">
+			select쿼리문
+		</select>
+	 -->
+	<resultMap type="Reply" id="ReplyResultMap">
+	  	<!-- <result column="테이블의 컬럼명" property="객체의 필드명"/> -->
+	  	<result column="REPLY_NO" property="replyNo"/>
+	  	<result column="REPLY_CONTENT" property="replyContent"/>
+	  	<result column="REF_BNO" property="refBno"/>
+	  	<result column="REPLY_WRITER" property="replyWriter"/>
+	  	<result column="CREATE_DATE" property="createDate"/>
+	  	<result column="status" property="status"/>
+  	</resultMap>
+  	<insert id="insertReply" parameterType="Reply">
+  	 INSERT 
+  	 INTO Reply(
+  	 REPLY_NO,
+	 REPLY_CONTENT,
+	 REF_BNO,
+	 REPLY_WRITER
+	
+  	 )VALUES(
+  	 SEQ_RNO.NextVaL,
+  	 #{replyContent},
+  	 #{refBno},
+  	 #{replyWriter}
+  	 )
+  	</insert>
+  	<select id="selectReplyList"  resultMap="ReplyResultMap" >
+ 		SELECT 
+ 				REPLY_NO,
+				REPLY_CONTENT,
+				USER_ID,
+				COUNT,
+				R.CREATE_DATE
+ 		  FROM Reply R
+ 		  JOIN MEMBER ON(REPLY_WRITER = USER_NO)
+ 		  JOIN BOARD ON(REF_BNO = BOARD_NO)
+ 		 WHERE R.STATUS = 'Y' 
+ 		 and user_id = #{userId}
+ 		 and REF_BNO =#{boardNo}
+ 		 ORDER BY REPLY_NO DESC
+ 	</select>
+
+
+</mapper>

@@ -5,24 +5,26 @@ import java.io.IOException;
 import com.kh.mybatis.board.model.vo.Board;
 import com.kh.mybatis.board.service.BoardService;
 import com.kh.mybatis.board.service.BoardServiceImpl;
+import com.kh.mybatis.member.model.vo.Member;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class BoardDetailFormController
+ * Servlet implementation class BoardInsertController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailFormController extends HttpServlet {
+@WebServlet("/insert.bo")
+public class BoardInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailFormController() {
+    public BoardInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,19 +33,20 @@ public class BoardDetailFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("loginUser");
 		
-		int bno = Integer.parseInt(request.getParameter("bno"));
+		Board board = new Board();
+		board.setBoardTitle(request.getParameter("title"));
+		board.setBoardWriter(m.getUserNo());
+		board.setBoardContent(request.getParameter("content"));
 		
-		BoardService boardService = new BoardServiceImpl();
-		 
-		Board b = boardService.selectOneBoard(bno);
+		BoardService bService = new BoardServiceImpl();
 		
-	
-		
-		request.setAttribute("board", b);
-		request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
+		int result = bService.insertBoard(board);
 		
 		
+		response.sendRedirect(request.getContextPath()+"/list.bo?cpage=1");
 	}
 
 	/**

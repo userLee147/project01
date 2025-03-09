@@ -49,8 +49,8 @@
 				GENDER,
 				PHONE,
 				ADDRESS
-			)VALUES
-			(
+		)VALUES
+		(
 				SEQ_UNO.NEXTVAL,
 				#{userId},
 				#{userPwd},
