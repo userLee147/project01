@@ -3,29 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.boot.mappers.attachmentMapper">
-    <!-- Attachment 테이블 전체 컬럼-->
-    <sql id="AttachmentColumns">
-        FILE_NO,
-        REF_BNO,
-        ORIGIN_NAME,
-        CHANGE_NAME,
-        FILE_SIZE
-    </sql>
-    <!-- 파일 정보 저장 -->
-    <insert id ="insertAttachment" parameterType="Attaachment">
-        <foreach item="file" collection="list" separator=",">
-            insert into Attachment (
-            <include refid ="AttachmentColumns" />
-             )values
+<mapper namespace="com.kh.boot.mappers.AttachmentMapper">
 
-            (
+    <insert id ="insertAttachment" parameterType="Attachment">
+
+            insert into Attachment (
+            FILE_NO,
+            REF_BNO,
+            ORIGIN_NAME,
+            CHANGE_NAME,
+            FILE_SIZE)values
                 SEQ_FNO.NEXTVAL,
                 SEQ_BNO.CURRVAL,
                 #{file.originName},
                 #{file.changeName},
                 0
             )
-        </foreach>
      </insert>
 </mapper>

@@ -12,8 +12,6 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-
-
 public class Member {
 
     private String userId;

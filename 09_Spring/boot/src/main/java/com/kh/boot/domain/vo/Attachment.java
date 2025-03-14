@@ -16,7 +16,7 @@ public class Attachment {
     private String changeName;
     private long fileSize;
 
-@Builder
+    @Builder
     public Attachment(String originName, String changeName, long fileSize) {
         this.originName = originName;
         this.changeName = changeName;

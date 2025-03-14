@@ -11,7 +11,6 @@ import java.util.ArrayList;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/board")
-
 public class APIBoardController {
 
     private final BoardService boardService;

@@ -16,8 +16,6 @@ public class APIMemberController {
     private final MemberService memberService;
 
 
-
-
     @GetMapping("/id")
     public String checkMemberId(String checkId){
         int result = memberService.idCheck(checkId);

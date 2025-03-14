@@ -2,7 +2,6 @@ package com.kh.boot.service;
 
 import com.kh.boot.domain.vo.Attachment;
 import com.kh.boot.mappers.AttachmentMapper;
-import com.kh.boot.mappers.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
