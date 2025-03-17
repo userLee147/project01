@@ -2,18 +2,16 @@ package com.kh.boot.controller;
 
 import com.kh.boot.domain.vo.Board;
 import com.kh.boot.domain.vo.PageInfo;
+import com.kh.boot.domain.vo.Photoboard;
 import com.kh.boot.service.BoardService;
 import com.kh.boot.utils.Template;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -27,9 +25,12 @@ public class BoardController {
     public String selectBoardList(@RequestParam(defaultValue ="1") int cpage, Model model){
         int boardCount = boardService.selectBoardCount();
 
+
+
         PageInfo pi = new PageInfo(boardCount,cpage,10,5);
 
         ArrayList<Board> list = boardService.selectBoardList(pi);
+        System.out.println(list);
 
         model.addAttribute("list",list);
         model.addAttribute("pi",pi);
@@ -41,6 +42,7 @@ public class BoardController {
     public String selectBoard(@RequestParam( value = "bno") int boardNo, Model model){
         Board b = boardService.selectBoard(boardNo);
         model.addAttribute("b",b);
+
 
 
         return "board/boardDetailView";

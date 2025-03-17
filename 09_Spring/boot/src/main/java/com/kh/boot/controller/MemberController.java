@@ -123,7 +123,7 @@ public class MemberController {
             session.setAttribute("alterMsg","성공적으로 회원가입을 완료하였습니다.");
             return "redirect:/";
         }else{
-            model.addAttribute("alertMsg","성공적으로 회원가입을 완료하였습니다.");
+            model.addAttribute("errorMsg","회원가입에 실패하였습니다.");
             return "common/errorPage";
         }
 

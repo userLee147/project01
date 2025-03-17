@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.boot.mappers.PhotoboardMapper">
+    <resultMap id="resultPboard" type="Photoboard">
+        <result column="PHOTO_NO" property="photoNo" />
+        <result column="PHOTO_TITLE" property="photoTitle" />
+        <result column="PHOTO_WRITER" property="photoWriter" />
+        <result column="PHOTO_CONTENT" property="photoContent" />
+        <result column="ORIGIN_NAME" property="originName" />
+        <result column="ORIGIN_NAME" property="changeName" />
+        <result column="COUNT" property="count" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="STATUS" property="status" />
+    </resultMap>
+
+    <select id="photoBoard" resultMap="resultPboard">
+        select
+        PHOTO_NO,
+        PHOTO_TITLE,
+        PHOTO_WRITER,
+        PHOTO_CONTENT,
+        ORIGIN_NAME,
+        CHANGE_NAME,
+        COUNT,
+        To_char(CREATE_DATE, 'YYYY-MM-DD') as create_date
+        from PHOTOBOARD
+        where STATUS ='Y'
+        order by PHOTO_NO desc
+    </select>
+    <insert id ="insertPboard" useGeneratedKeys="true" keyProperty="PHOTO_NO">
+
+        insert into PHOTOBOARD (
+        PHOTO_NO,
+        PHOTO_TITLE,
+        PHOTO_WRITER,
+        PHOTO_CONTENT,
+        ORIGIN_NAME,
+        CHANGE_NAME,
+        )values
+        SEQ_FBNO.NEXTVAL,
+        #{pboard.photoTitle},
+        #{pboard.photoWriter},
+        #{pboard.photoContent},
+        #{pboard.originName},
+        #{pboard.changeName}
+        )
+    </insert>
+
+    <insert id ="insertAttachment" parameterType="Attachment">
+            insert into Attachment (
+            FILE_NO,
+            REF_BNO,
+            ORIGIN_NAME,
+            CHANGE_NAME,
+            FILE_SIZE)values
+                SEQ_FNO.NEXTVAL,
+                SEQ_BNO.CURRVAL,
+                #{file.originName},
+                #{file.changeName},
+                0
+            )
+     </insert>
+</mapper>

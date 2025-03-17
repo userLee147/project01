@@ -1,6 +1,7 @@
 package com.kh.boot.mappers;
 
 import com.kh.boot.domain.vo.Board;
+import com.kh.boot.domain.vo.Photoboard;
 import com.kh.boot.domain.vo.Reply;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
@@ -21,5 +22,5 @@ public interface BoardMapper {
 
     int insertBoard(Board board);
 
-    ArrayList<Board> photoBoard();
+    ArrayList<Photoboard> photoBoard();
 }

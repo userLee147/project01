@@ -23,6 +23,7 @@
         <result column="CREATE_DATE" property="createDate" />
         <result column="STATUS" property="status" />
     </resultMap>
+
     <select id="selectBoardCount" resultType="_int">
         select count(*)
         from Board
@@ -98,18 +99,5 @@
         WHERE REF_BNO = #{boardNo}
 
     </select>
-    <select id="photoBoard" resultMap="resultBoard">
-        select
-        BOARD_NO,
-        BOARD_TITLE,
-        BOARD_WRITER,
-        CHANGE_NAME,
-        ORIGIN_NAME,
-        COUNT,
-        To_char(CREATE_DATE, 'YYYY-MM-DD') as create_date
-        from board
-        where STATUS ='Y'
-        and CHANGE_NAME is not null
-        order by board_no desc
-    </select>
+
 </mapper>

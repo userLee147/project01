@@ -23,7 +23,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 *
 * */
 @Slf4j
-@Component
+//@Component
 public class LogginInterceptor implements HandlerInterceptor {
 
     //요청이 컨트롤러에 전달되기 전에

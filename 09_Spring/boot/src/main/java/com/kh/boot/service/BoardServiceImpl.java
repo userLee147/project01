@@ -2,6 +2,7 @@ package com.kh.boot.service;
 
 import com.kh.boot.domain.vo.Board;
 import com.kh.boot.domain.vo.PageInfo;
+import com.kh.boot.domain.vo.Photoboard;
 import com.kh.boot.domain.vo.Reply;
 import com.kh.boot.mappers.BoardMapper;
 import lombok.RequiredArgsConstructor;
@@ -44,17 +45,15 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public ArrayList<Reply> getReplyList(int boardNo) {
+
         return boardMapper.getReplyList(boardNo);
     }
 
     @Override
     public int insertBoard(Board board) {
+
         return boardMapper.insertBoard(board);
     }
 
-    @Override
-    public ArrayList<Board> photoBoard() {
 
-        return boardMapper.photoBoard();
-    }
 }

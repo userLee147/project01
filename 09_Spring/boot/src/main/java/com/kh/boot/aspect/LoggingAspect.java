@@ -55,7 +55,7 @@ public class LoggingAspect {
 
     @Pointcut("execution(* com.kh.boot.RESTController.*.*(..) )")
     private void controllerPointcut() {};
-
+/*
     @Before("controllerPointcut()")
     public void before(JoinPoint joinPoint) {
         //실행되는 메서드의 이름을 가져오기
@@ -99,5 +99,5 @@ public class LoggingAspect {
 
         return result;
     }
-
+*/
 }

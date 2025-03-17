@@ -79,7 +79,7 @@
         <table class="table">
           <tr>
             <th ><label for="title">제목</label></th>
-            <td ><input type="text" id="title" class="form-control" name="boardTitle" required></td>
+            <td ><input type="text" id="title" class="form-control" name="photoTitle" required></td>
 
             <th><label for="createDate">작성일</label></th>
             <td><input type="text" id="createDate" class="form-control" name="createDate"></td>
@@ -87,31 +87,28 @@
           </tr>
           <tr>
             <th ><label for="writer">작성자</label></th>
-            <td colspan="3"><input type="text" id="writer" class="form-control" value="${loginUser.userId }" name="boardWriter" readonly></td>
+            <td colspan="3"><input type="text" id="writer" class="form-control" value="${loginUser.userId }" name="photoWriter" readonly></td>
           </tr>
           <tr>
             <th ><label for="content">내용</label></th>
-            <td colspan="3"><textarea id="content" class="form-control" rows="10" style="resize:none;" name="boardContent" required></textarea></td>
+            <td colspan="3"><textarea id="content" class="form-control" rows="10" style="resize:none;" name="photoContent" required></textarea></td>
           <tr>
               <th>첨부파일</th>
               <td colspan="3">
                   <div class="file_list">
                       <div>
                           <div class="file_input">
-
-                              <label>
-                                  <input type="file" name="files" onchange="selectFile(this);" />
-                              </label>
                               <label> attachenmet에 여러개 첨부파일 첨부하기
-                                  <input type="file" multiple="multiple" name="files" onchange="selectFile(this);" />
+                                  <input type="file" multiple="multiple" name="upfile" onchange="selectFile(this);" />
                               </label>
 
                           </div>
+
+
                           <button type="button" class="btns del_btn">파일추가</button>
-                          <!--
                           <button type="button" onclick="removeFile(this);" class="btns del_btn"><span>삭제</span></button>
-                          <button type="button" onclick="addFile();" class="btns fn_add_btn"><span>파일 추가</span></button>
-                         -->
+
+
                   </div>
               </td>
           </tr>

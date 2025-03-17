@@ -1,6 +1,4 @@
 package com.kh.boot.domain.vo;
-
-
 import lombok.*;
 
 @Getter
@@ -8,7 +6,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Attachment {
     private int fileNo;
     private int refBno;

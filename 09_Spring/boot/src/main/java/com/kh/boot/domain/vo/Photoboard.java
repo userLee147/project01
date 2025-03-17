@@ -3,7 +3,7 @@ package com.kh.boot.domain.vo;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -11,22 +11,15 @@ import java.util.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-
-public class Board {
-
-    private int boardNo;
-    private String boardTitle;
-    private String boardWriter;
-    private String boardContent;
+public class Photoboard {
+    private int photoNo;
+    private String photoTitle;
+    private String photoWriter;
+    private String photoContent;
     private String originName;
     private String changeName;
-    private String count;
+    private int count;
     private String createDate;
     private String status;
-    private int boardType;
-
-
-
-
-
+    private List<MultipartFile> upfile;
 }

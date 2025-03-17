@@ -2,13 +2,14 @@ package com.kh.boot.controller;
 
 import com.kh.boot.domain.vo.Attachment;
 import com.kh.boot.domain.vo.Board;
-import com.kh.boot.service.AttachmentService;
+import com.kh.boot.domain.vo.Photoboard;
+import com.kh.boot.service.PhotoboardService;
 import com.kh.boot.service.BoardService;
 import com.kh.boot.service.FileService;
 import com.kh.boot.utils.FileUtils;
 import com.kh.boot.utils.Template;
 import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +19,19 @@ import java.util.ArrayList;
 
 @RequiredArgsConstructor
 @Controller
-public class AttachmentController {
+public class PhotoboardController {
 
     private final BoardService boardService;
     private final FileService fileService;
     private final FileUtils fileUtils;
-    private final AttachmentService attachmentService;
+    private final PhotoboardService photoboardService;
+
+
+
 
     @GetMapping("photo.bo")
     public String photoview(Model model) {
-        ArrayList<Board> list = boardService.photoBoard();
+        ArrayList<Photoboard> list = photoboardService.photoBoard();
 
         model.addAttribute("list", list);
         return "photo/photoListView";
@@ -67,21 +71,33 @@ public class AttachmentController {
     */
 
     @PostMapping("save.ph")
-    public String savePost(@ModelAttribute MultipartFile[] upfile, Board board, HttpSession session, Model model) {
+    public String savePost(@ModelAttribute Photoboard pboard, HttpSession session, Model model) {
+        System.out.println("pboard"+ pboard);
 
-        System.out.println(board);
+        Attachment[] files = new Attachment[pboard.getUpfile().size()];
+        if(files != null){
 
-        Attachment[] files = new Attachment[upfile.length];
 
-        for (int i = 0; i < upfile.length; i++) {
-            files[i].setOriginName(upfile[i].getOriginalFilename());
-            files[i].setChangeName(Template.saveFile(upfile[i],session,"/resources/upload/"));
+            for (int i = 0; i < files.length; i++) {
+
+                files[i].setOriginName(pboard.getUpfile().get(i).getOriginalFilename());
+                files[i].setChangeName(Template.saveFile(pboard.getUpfile().get(i),session,"/resources/upload/"));
+                if(i == 0){
+                    pboard.setOriginName(files[0].getOriginName());
+                    pboard.setChangeName(files[0].getChangeName());
+                }
+            }
 
         }
+        int result = photoboardService.insertAttachment(pboard, files);
 
-        int result = attachmentService.insertAttachment(files);
 
-
+        if(result >0){
+            session.setAttribute("alertMsg" ,"게시글 등록 성공");
+        } else{
+            model.addAttribute("errorMsg","게시글 등록 실패");
+            return "redirect:/";
+        }
         return "photo/photoListView" ;
     }
 

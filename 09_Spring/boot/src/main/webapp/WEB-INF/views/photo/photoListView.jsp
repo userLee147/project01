@@ -7,41 +7,79 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style>
-        .outer {
-            background: rgb(247, 245, 245);
-            color: black;
-            width: 1000PX;
-            margin: auto;
-            margin-top: 50px;
-            padding: 10px 0px 50px;
+        body{
+          font-family: 'Noto Sans KR',sans-serif;
+          color:  #222;
+          line-height: 1.5em;
+          font-weight: 300;
+          margin: 0;
+          font-size: 15px;
+          box-sizing: border-box;
+
+        }
+        a{
+          color: #222;
+          text-decoration: none;
+        }
+        .outline{
+          border-bottom: 1px solid gray;
+          width: 1000px;
+          display: flex;
+          margin: auto;
+
+        }
+        .item{
+          width: 80%;
+
+        }
+        .item tr td{
+          padding: 5px 10px;
+        }
+        .item tr:nth-child(1) td{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          height:10%;
+
+        }
+        .item tr:nth-child(1) {
+          height: 10%;
+
+        }
+        .item tr:nth-child(2) span {
+          font-size: 20px;
+        }
+        .item tr:nth-child(3) td  {
+          padding-bottom: 20px;
+        }
+        .item tr td span, .item tr td p{
+          text-align: left;
+
         }
 
-        .list-area{
-            max-width: 850px;
-            min-height: 500px;
-            margin: auto;
+        .photo{
+          width: calc(1000px - 80%);
+          position: relative;
+          z-index: 1;
+        }
+        .photo>img{
+          width: 100%;
+          height: 90%;
+        }
+        .photo img{
+          display: flex;
         }
 
-        .thumbnail{
-            display: inline-block;
-            border: 1px solid white;
-            width: 250px;
-            padding: 12px;
-            margin: 14px;
-            box-sizing: border-box;
-        }
+        .photo a img{
+          border: 6px solid rgba(9, 9, 9, 0);
+          background-color: rgba(9, 9, 9, 0.459);
+          border-radius: 5px;
+          width: 20px;
+          position: absolute;
+          z-index: 2;
+          top: 75%;
+          right: 0%;
 
-        .thumbnail p > span{
-            display: inline-block;
-            width: 220px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .thumbnail:hover{
-        	background: #93b8fd;
-        	cursor: pointer;
         }
     </style>
 </head>
@@ -62,14 +100,41 @@
         <div class="list-area">
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="b" items="${list}">
-                        <div class="thumbnail" align="center" onclick="location.href='${pageContext.request.contextPath}/detail.th?bno=${b.boardNo}'">
-                            <img width="200px" height="150px" src="${b.changeName}" alt="썸네일이미지">
-                            <p>
-                                <span>No. ${b.boardNo} ${b.boardTitle} </span><br>
-                                조회수 : ${b.count}
-                            </p>
+                    <c:forEach var="p" items="${list}">
+                      <div class="items">
+                        <div class="outline">
+                          <table class="item">
+                            <tr>
+                              <td>
+                                  <img src="img/user.png" width="50px" alt="">
+                                  <span>${p.photoWriter}</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                              <span><b>${b.photoTitle}</b></span>
+                              <p>board Content : ${p.photoContent}</p>
+                            </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span>조회수 : ${p.count}</span>
+                                <span>댓글 : 00 </span>
+                              </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                          </table>
+
+                            <div class="photo">
+                              <img name="file" id="file1" src="" alt="">
+                              <a href=""><img src="img/plus.png" alt=""></a>
+                            </div>
+
                         </div>
+                      </div>
+                      </div>
+
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
@@ -82,6 +147,7 @@
                 </c:otherwise>
             </c:choose>
         </div>
+
 	</div>
 </body>
 </html>
