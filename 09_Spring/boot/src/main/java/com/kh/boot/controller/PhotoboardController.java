@@ -77,7 +77,6 @@ public class PhotoboardController {
         Attachment[] files = new Attachment[pboard.getUpfile().size()];
         if(files != null){
 
-
             for (int i = 0; i < files.length; i++) {
 
                 files[i].setOriginName(pboard.getUpfile().get(i).getOriginalFilename());

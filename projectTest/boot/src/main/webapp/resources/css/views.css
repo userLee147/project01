@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body,
+.wrapper {
+  min-width: 100vh;
+}
+
+a {
+  text-decoration-line: none;
+  color: black;
+}
+
+button {
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid gainsboro;
+}
+.header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gainsboro;
+}
+#head1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header > #head1 > img {
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin: 20px;
+}
+.header > #head1 > span {
+  font-size: 30px;
+}
+
+#head2 {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-right: 50px;
+}
+#head2 > button {
+  border-radius: 20px;
+  width: 150px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#head2 > button > a > img {
+  width: 20px;
+  height: 20px;
+  margin: auto 5px;
+}
+
+#head_btn1 > a > :nth-child(2) {
+  width: 8px;
+  height: 12px;
+}
+
+#head2 > button > a {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: auto;
+}
+
+.header > #head2 > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+/* main content(큰틀) */
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+/* nav */
+nav {
+  font-size: 20px;
+  background-color: rgb(236, 238, 238);
+ 
+}
+.main > nav {
+  width: 15%;
+  height: 100%;
+}
+nav > ul {
+  width: 100%;
+  height: 100%;
+}
+#nav0 {
+  height: 90px;
+  border-bottom: 1px solid snow;
+}
+
+nav > ul > li {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  position: relative;
+}
+
+nav ul > li > a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: 5pz;
+}
+
+nav > ul > li:nth-child(3) {
+  display: none;
+}
+
+nav > ul > li:nth-child(2):hover + li:nth-child(3) {
+  display: block;
+}
+nav > ul > li:nth-child(3):hover {
+  display: block;
+}
+
+#logo {
+  width: 40px;
+  height: 40px;
+}
+
+
+nav ul > li > a div {
+  flex: 3;
+}
+
+
+
+
+
+nav ul > li > a img {
+  width: 20px;
+  height: 20px;
+  margin: auto 20px;
+}
+
+nav ul > li:hover > a {
+  color: #3cb79d;
+  background-color: #ffe699ab;
+  border-radius: 10px;
+}
+
+/* content */
+.main > .content {
+  width: 75%;
+  margin: 0 auto;
+}
+#main-section1 {
+  height: 150px;
+  display: flex;
+  border-bottom: 1px solid gainsboro;
+}
+
+#section1_1 {
+  width: 100%;
+}
+#section1_1 > div {
+  padding-top: 30px;
+}
+
+#section1_1 > :nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#section1_1 > div > p {
+  font-size: 30px;
+}
+
+#section1_1 > div > a > img {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+}
+
+#section1_1 > :nth-child(2) {
+  display: flex;
+  gap: 50px;
+}
+#section1_1 > div > input[type='text'] {
+  width: 40%;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  background: url(./images/leaves-5709490_1280.png) no-repeat;
+  background-size: 20px 20px;
+  background-position-y: center;
+}
+#section1_1 > div > img {
+  width: 20px;
+  height: 20px;
+}
+
+#section1_2 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#section1_2 > button {
+  border: 1px solid gainsboro;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 160px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+#section1_2_btn1 {
+  background-color: #3cb79d;
+}
+
+#section1_2_btn1 > a {
+  display: flex;
+  color: white;
+  gap: 10px;
+  margin: auto 0;
+}
+
+#section1_2_btn1 > a > img {
+  width: 20px;
+  height: 20px;
+}
+
+#section1_2_btn1 > a > :nth-child(2) {
+  width: 18px;
+  height: 12px;
+  margin: auto 0;
+  margin-left: 25px;
+}
+
+#section1_2_btn2 {
+  background-color: white;
+}
+#section1_2_btn2 > a {
+  display: flex;
+  gap: 10px;
+  margin: auto 0;
+}
+
+#section1_2_btn2 > a > img {
+  height: 20px;
+  margin: auto 2px;
+}
+
+#main-section2 {
+  height: calc(100% - 150px);
+}
+
+#section2_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#section2_1 > p {
+  margin-top: 100px;
+  width: 100%;
+  font-size: 20px;
+  color: gainsboro;
+}
+
+#section2_1 > button {
+  display: flex;
+  align-content: center;
+  font-size: 20px;
+  border-radius: 5px;
+  width: 160px;
+  background-color: #3cb79d;
+  margin-top: 20px;
+}
+#section2_1 > button > a {
+  color: white;
+}
+#section2_1 > button > img {
+  width: 20px;
+  height: 20px;
+  margin: auto 10px;
+}
