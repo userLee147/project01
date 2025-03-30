@@ -214,6 +214,10 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </section>
 </div> 
-
+<script>
+  function addList(){
+    
+  }
+</script>
 </body>
 </html>
