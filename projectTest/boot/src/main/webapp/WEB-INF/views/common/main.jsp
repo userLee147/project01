@@ -2,7 +2,7 @@
 prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
-    <link rel="stylesheet" href="../../../resources/css/views.css">
+    <link rel="stylesheet" href="../../../resources/css/main.css">
     <style>
         body{
             box-sizing: border-box;
@@ -95,6 +95,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <a id="output" href="">
                 <img id="output_item"src="../../../resources/img/Combo Chart.png" alt="분석"/>분석</a>
             </li>
+                <li>
+                  <a id="output" href="test.pos"> 포스기 연동</a>
+                </li>
           </ul>
         </nav>
         <div class="content">

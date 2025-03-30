@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("test.lee")
-    public String test() {
-        return "common/view";
+    @GetMapping("test.main")
+    public String main() {
+        return "common/main";
     }
+    @GetMapping("test.pos")
+    public String pos() {
+        return "common/pos";
+    }
+
 }

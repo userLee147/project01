@@ -8,7 +8,7 @@
 <body>
 <jsp:include page="common/header.jsp"/>
 index.jsp
-<a href="test.lee">test</a>
+<a href="test.main">test</a>
 
 </body>
 </html>
