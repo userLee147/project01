@@ -60,56 +60,65 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <th>상품번호</th>
                 <th>상품명</th>
                 <th>수량</th>
+                <th>금액</th>
                 <th>추가</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody >
               <tr>
                 <td>1</td>
                 <td>달콤프란찌(딸기)</td>
                 <td>1</td>
-                <td>버튼<img src="" alt=""></td>
+                <td>8000</td>
+                <td><button onclick="addList(this)">추가</button></td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>달콤프란찌(초코)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
+                <td>8000</td>
                 <td>버튼<img src="" alt=""></td>
               </tr>
 
@@ -164,42 +173,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <th>금액</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td >버튼<img src="" alt=""></td>
-              <td>1</td>
-              <td>달콤프란찌(딸기)</td>
-              <td><input type="text"></td>
-              <td>8,000</td>  
-            </tr>
-            <tr>
-              <td>버튼<img src="" alt=""></td>
-              <td>2</td>
-              <td>달콤프란찌(초코)</td>
-              <td><input type="text"></td>
-              <td>8,000</td>  
-            </tr>
-            <tr>
-              <td>버튼<img src="" alt=""></td>
-              <td>2</td>
-              <td>달콤프란찌(초코)</td>
-              <td><input type="text"></td>
-              <td>8,000</td>  
-            </tr>
-            <tr>
-              <td>버튼<img src="" alt=""></td>
-              <td>2</td>
-              <td>달콤프란찌(초코)</td>
-              <td><input type="text"></td>
-              <td>8,000</td>  
-            </tr>
-            <tr>
-              <td>버튼<img src="" alt=""></td>
-              <td>2</td>
-              <td>달콤프란찌(초코)</td>
-              <td><input type="text"></td>
-              <td>8,000</td>  
-            </tr>
+          <tbody id="tbshow">
 
           </tbody>
         </table>
@@ -208,15 +182,60 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <div class="payCount" >
         <div class="payCount-content">
           <p>결제금액</p>
-          <p>총액 : </p>
+          <p id="totalcount">총액 : </p>
         </div>
         <button class="pay-btn" type="submit">결제하기</button>
       </div>
     </section>
 </div> 
 <script>
-  function addList(){
+  function addList(this_tb){
+    const objRow = document.all("tbshow").insertRow();
+    const test = this_tb.closest('tr');
+    var rowNum = test.childElementCount;
+
+    for (var i =0; i < rowNum; i++){
+      var addrow;
+      if(i==0){
+        addrow = objRow.insertCell();
+        addrow.innerHTML="<input type='button' onclick='deleteList(this)' value='삭제'>"
+      }else if(i == 3){
+        addrow = objRow.insertCell();
+        const num = test.cells[i-1].innerHTML; 
+        addrow.innerHTML = "<input type='text' onchange='priceCount()' value ='"+ num +"'>";
+      }else{
+        addrow = objRow.insertCell();
+        addrow.innerHTML = test.cells[i-1].innerHTML; 
+      }
+    }
+
+    priceCount();
+
+  }
+
+  function deleteList(this_tb){
+    const test = this_tb.closest('tr');
+    test.remove();
     
+    priceCount();
+
+  }
+
+  function priceCount(){
+    const table = document.getElementById('tbshow').getElementsByTagName('tr')
+    const total = document.getElementById('totalcount');
+    var sum =0;
+    
+
+    for(i=0;i<table.length;i++){
+      var cnt = table[i].cells[3].querySelector('input').value;
+      var price = table[i].cells[4].innerText;
+      sum += cnt*price;
+      console.log(cnt)
+    }
+    console.log(sum)
+
+    total.innerText = "총액 : " + sum;
   }
 </script>
 </body>
