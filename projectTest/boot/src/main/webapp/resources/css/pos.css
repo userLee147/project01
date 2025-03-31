@@ -1,3 +1,4 @@
+/*head*/
 .header {
   width: 100%;
   height: 50px;
@@ -11,6 +12,7 @@
 .header p {
   font-size: 20px;
 }
+
 .header div {
   display: flex;
   justify-content: center;
@@ -19,19 +21,21 @@
   margin-right: 10px;
 }
 
+/*main*/
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: calc(100% - 50px);
 }
 
-.itemList {
+/* main > 상품창(왼쪽) */
+.pos-searchitem {
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
   height: 100%;
 }
 
-/*searchbar : 상품목록 검색창*/
+/* pos-searchitem > searchbar : 검색창*/
 .searchBar-outer {
   width: calc(100% - 10px);
   margin: 0px auto;
@@ -39,12 +43,13 @@
   border-radius: 4px;
   border: 1px solid #6b6b6b;
 }
-p {
+.searchBar-outer > p {
   padding: 4px;
   font-size: 30px;
 }
 .searchBar-div {
   display: flex;
+  
   align-items: center;
   background-color: white;
   border: 1px solid #6b6b6b;
@@ -59,18 +64,27 @@ p {
   padding: 10px;
 }
 .searchBar-div > input {
+  width: 90%;
+  font-size: 15px;
   color: black;
   background: white;
   border: none;
 }
 
-/*searchItem : : 상품목록*/
+
+/*table 공통*/
 table {
   width: 100%;
   text-align: center;
   line-height: center;
 }
-.searchItem-outer {
+
+td > img:hover{
+  cursor: pointer;
+}
+
+/* pos-searchitem > itemList : 상품목록*/
+.itemList-outer {
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   margin: 0px auto;
@@ -80,67 +94,67 @@ table {
 }
 
 
-.search-table {
+.item-table {
   width: calc(100% - 20px);
   border: 1px solid #6b6b6b;
   border-collapse: collapse;
   margin: 10px; 
 }
 
-.search-table thead{
-  background-color: #636060;
-}
 
-.search-table thead, .search-table tbody {
+.item-table thead, .item-table tbody {
   display: table; 
   width: 100%;
 }
 
-.search-table tbody{
+.item-table thead{
+  background-color: #636060;
+}
+
+.item-table tbody{
   width: 100%;
   display: block;
   max-height: 400px;
   overflow-y: scroll;
 }
 
-.search-table tr{
+.item-table tr{
   display: table;
   width: 100%;
 }
 
-.search-table thead tr{
+.item-table thead tr{
   width: calc(100% - 20px);
 }
 
-
-  .search-table th:nth-child(1), 
-  .search-table td:nth-child(1) {
+  .item-table th:nth-child(1), 
+  .item-table td:nth-child(1) {
     width: 10%;
    }
-   .search-table th:nth-child(2), 
-   .search-table td:nth-child(2) {
+   .item-table th:nth-child(2), 
+   .item-table td:nth-child(2) {
      width: 40%;
     }
-    .search-table th:nth-child(3), 
-    .search-table td:nth-child(3) {
+    .item-table th:nth-child(3), 
+    .item-table td:nth-child(3) {
      width: 10%;
     }
-    .search-table th:nth-child(4), 
-    .search-table td:nth-child(4) {
+    .item-table th:nth-child(4), 
+    .item-table td:nth-child(4) {
      width: 15%;
     }
-    .search-table th:nth-child(5), 
-    .search-table td:nth-child(5) {
+    .item-table th:nth-child(5), 
+    .item-table td:nth-child(5) {
      width: 15%;
     }
 
-.search-table th {
+.item-table th {
   border-bottom: 1px solid #6b6b6b;
   background: #636060;
   color: #fe8c12;
   padding: 5px;
 }
-.search-table td {
+.item-table td {
   border-bottom: 1px dotted #6b6b6b;
   background: white;
   color: black;
@@ -149,7 +163,9 @@ table {
 
 
 
-.calclate-outer {
+
+/* pos-searchitem > calculate : 상품입력*/
+.enteritem-outer {
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   margin: 0px auto;
@@ -158,28 +174,75 @@ table {
   border: 1px solid #6b6b6b;
 }
 
-.cal-table {
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  border: none;
-  border-collapse: collapse;
-  margin: 5px;
-}
-
-.cal-table tr,
-.cal-table td {
-  border: 2px solid #d9d9d9;
-  background-color: #636060;
+.enteritem-inner{
+  display: flex;
   color: white;
+  justify-content: center;
+  
+  margin-top: 4px;
 }
-.enter {
-  border: none;
+
+.enter-title{
+  width: 110px;
+  height: inherit;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid #d9d9d9;
+  border-right: 2px solid #d9d9d9;
+  background-color: #636060;
+  font-size: 15px;
 }
 
 
+.enter-content{
+  display: flex;
+  flex-direction: column;
+}
+.enter1,.enter2{
+  display:flex;
+  gap: 1px;
+}
+.enter1 > div,.enter2 > div{
+  width: 50px;
+  height: 50px;
+  border: 1px solid #d9d9d9;
+  background-color: #636060;
+  text-align : center;
+  line-height: 50px;
+}
 
-/*pay(결제창-오른쪽) */
-.payList{
+.enter-show{
+  width: 110px;
+  border: 1px solid #d9d9d9;
+  background-color: #636060;
+  position: relative;
+}
+.enter-show > div:nth-child(1){
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 60px;
+  color: #fe8c12;
+
+}
+.enter-show > div:nth-child(2){
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  width: 50px;
+  height: 50px;
+  text-align : center;
+  line-height: 50px;
+
+  background-color: #636060;
+  border-right: 2px solid #d9d9d9;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+
+/*main > 결제창(오른쪽) */
+.pos-payitem{
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
   border: 1px solid #636060;
@@ -190,11 +253,11 @@ table {
 }
 
 /*pay head */
-.payList-subtitle {
+.payList-title {
   border-bottom: 1px solid #636060;
   margin: 2px;
 }
-.payList-subtitle > p {
+.payList-title > p {
   font-size: 15px;
   margin: 0 5px;
 }
@@ -304,6 +367,7 @@ table {
   border-radius: 4px;
   margin: 5px;
   color: #fe8c12 ;
+  border: none;
 }
 
 

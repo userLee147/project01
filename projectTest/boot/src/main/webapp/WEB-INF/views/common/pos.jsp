@@ -38,7 +38,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
   </div>
   <div class="main">
-    <section class="itemList">
+    <section class="pos-searchitem">
       
       <!--searchBar : 상품목록 검색창 -->
       <div class="searchBar">
@@ -52,9 +52,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
 
       <!--searchItem : 상품목록  -->
-      <div class="searchItem">
-        <div class="searchItem-outer">
-          <table class ="search-table">
+      <div class="itemList">
+        <div class="itemList-outer">
+          <table class ="item-table">
             <thead>
               <tr>
                 <th>상품번호</th>
@@ -70,56 +70,28 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <td>달콤프란찌(딸기)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td><button onclick="addList(this)">추가</button></td>
+                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>달콤프란찌(초코)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
+                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
+                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
-                <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>달콤프란찌(바나나)</td>
-                <td>1</td>
-                <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>달콤프란찌(바나나)</td>
-                <td>1</td>
-                <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>달콤프란찌(바나나)</td>
-                <td>1</td>
-                <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>달콤프란찌(바나나)</td>
-                <td>1</td>
-                <td>8000</td>
-                <td>버튼<img src="" alt=""></td>
+                <td>10000</td>
+                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
 
             </tbody>
@@ -127,36 +99,44 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
 
-      <div class="calculate">
-        <div class="calclate-outer">
-          <table class="cal-table">
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>c</td>
+      <div class="enteritem">
+        <div class="enteritem-outer">
+          <div class="enteritem-inner">
+            <div class="enter-title">
+              상품 번호입력
+            </div>
+            <div class="enter-content">
+              <div class="enter1">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
   
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>0</td>
-              <td class="enter" >검색하기</td> 
-            </tr>
-          </table>
+              </div>
+              <div class="enter2">
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>0</div>
+              </div>
+            </div>
+            <div class="enter-show">
+                <div>검색하기</div>
+                <div>c</div>
+            </div>
+          </div>
         </div>
+
       </div>
 
     </section>
     
-    <section class="payList">
+    <section class="pos-payitem">
       
       <div class="payList-head">
-        <div class="payList-subtitle">
+        <div class="payList-title">
           <p>POS-Recipt</p>
         </div>
         <p>결제목록</p>
@@ -198,7 +178,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       var addrow;
       if(i==0){
         addrow = objRow.insertCell();
-        addrow.innerHTML="<input type='button' onclick='deleteList(this)' value='삭제'>"
+        addrow.innerHTML="<img src='../../../resources/icons/삭제아이콘.png' alt='삭제' onclick='deleteList(this)'>"
+
       }else if(i == 3){
         addrow = objRow.insertCell();
         const num = test.cells[i-1].innerHTML; 
