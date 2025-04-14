@@ -57,16 +57,16 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a id="link" href="">
-                <img id="item" src="../../../resources/img/item2.png" alt="아이템" />
-                <div>상품</div>
-                <img src="../../../resources/img/Expand Arrow.png" alt="">
+                <img id="item" src="../../../resources/img/itembox.svg" alt="아이템" />
+                <div>제품목록</div>
+                <img src="../../../resources/img/Expand Arrow.png" id= "arrow" alt="화살표">
               </a>
             </li>
             <li>
-              <a id="link" href="./productadd copy.html"
+              <a id="link" href="item.add"
                 ><img id="item" src="../../../resources/img/plus.png" alt="더하기" />
                 <div>상품추가</div>
-                <img src="../../../resources/img/Expand Arrow.png" alt=""></a
+                <img id= "arrow"src="../../../resources/img/Expand Arrow.png" alt="화살표"></a
               >
 
             </li>
@@ -93,55 +93,13 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a id="output" href="">
-                <img id="output_item"src="../../../resources/img/Combo Chart.png" alt="분석"/>분석</a>
+                <img id="output_item"src="../../../resources/img/Combo Chart.svg" alt="분석"/>분석</a>
             </li>
                 <li>
                   <a id="output" href="test.pos"> 포스기 연동</a>
                 </li>
           </ul>
         </nav>
-        <div class="content">
-          <section id="main-section1">
-            <div id="section1_1">
-              <div>
-                <p>제품목록</p>
-                <a href=""><img src="../../../resources/img/info240.png" alt="느낌표" /></a>
-              </div>
-              <div>
-                <input type="text" placeholder="이름,바코드,속성검색" />
-                <div>
-                  <input type="checkbox" name="cnt" id="cnt" />
-                  <label for="cnt">재고보유</label>
-                </div>
-              </div>
-            </div>
-            <div id="section1_2">
-              <button id="section1_2_btn1">
-                <a href="./productadd.html">
-                  <img src="../../../resources/img/plus_white.png" alt="느낌표" />
-                  제품추가
-                  <img src="../../../resources/img/down_white.png" alt="화살표" />
-                </a>
-              </button>
-              <button id="section1_2_btn2">
-                <a href="">
-                  <img src="../../../resources/img/database.png" alt="느낌표" />
-                  데이터 관리
-                </a>
-              </button>
-            </div>
-          </section>
-          <section id="main-section2">
-            <div id="section2_1">
-              <!-- 함수가 필요할것 같음 -->
-              <p>등록한 제품이 없습니다. 제품을 추가해주세요</p>
-              <button>
-                <img src="../../../resources/img/plus_white.png" alt="" />
-                <a href="./productadd.html">제품추가</a>
-              </button>
-            </div>
-          </section>
-        </div>
       </main>
     </div>
 

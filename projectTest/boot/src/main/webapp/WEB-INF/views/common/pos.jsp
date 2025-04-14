@@ -9,17 +9,18 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<link rel="stylesheet" href="../../../resources/css/pos.css">
+<link rel="stylesheet" href="/resources/css/pos.css">
   <style>
     body{
       box-sizing: border-box;
     }
     *{
-  
+
       margin: 0px;
       padding: 0px;
     }
     .outer{
+      font-family: "Open Sans", sans-serif;
       width: 1024px;
       height: 768px;
       border: 1px solid black;
@@ -30,22 +31,22 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body>
 <div class="outer">
   <div class="header">
-    <p>편이덮밥 pos</p> 
+    <p>편이덮밥 pos</p>
     <div>
       <p >판매일자 : 자바스크립 필요</p>
-      <img src="../../../resources/img/엑스.png" alt="엑스">
+      <img src="resources/common/공통_엑스아이콘.png" alt="엑스">
     </div>
 
   </div>
   <div class="main">
     <section class="pos-searchitem">
-      
+
       <!--searchBar : 상품목록 검색창 -->
       <div class="searchBar">
         <div class="searchBar-outer">
           <p>상품목록</p>
           <div class="searchBar-div">
-            <img src="../../../resources/img/Search.png" alt="돋보기">
+            <img src="/resources/common/포스기_검색아이콘.png" alt="돋보기">
             <input type="text" placeholder="상품번호입력" >
           </div>
         </div>
@@ -70,28 +71,28 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <td>달콤프란찌(딸기)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
+                <td><img src="resources/common/포스기_추가 아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>달콤프란찌(초코)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
+                <td><img src="resources/common/포스기_추가 아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
                 <td>8000</td>
-                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
+                <td><img src="resources/common/포스기_추가 아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>달콤프란찌(바나나)</td>
                 <td>1</td>
                 <td>10000</td>
-                <td><img src="../../../resources/icons/추가아이콘.png" onclick="addList(this)" alt=""></td>
+                <td><img src="resources/common/포스기_추가 아이콘.png" onclick="addList(this)" alt=""></td>
               </tr>
 
             </tbody>
@@ -103,7 +104,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="enteritem-outer">
           <div class="enteritem-inner">
             <div class="enter-title">
-              상품 번호입력
+              <img src="resources/menubar_icons/로고ver2.png" alt="">
             </div>
             <div class="enter-content">
               <div class="enter1">
@@ -112,7 +113,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div>3</div>
                 <div>4</div>
                 <div>5</div>
-  
+
               </div>
               <div class="enter2">
                 <div>6</div>
@@ -132,9 +133,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
 
     </section>
-    
+
     <section class="pos-payitem">
-      
+
       <div class="payList-head">
         <div class="payList-title">
           <p>POS-Recipt</p>
@@ -144,7 +145,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
       <div class="payTable-outer">
         <table class="payTable">
-          <thead>         
+          <thead>
              <tr>
                 <th>삭제</th>
                 <th>상품번호</th>
@@ -167,7 +168,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <button class="pay-btn" type="submit">결제하기</button>
       </div>
     </section>
-</div> 
+</div>
 <script>
   function addList(this_tb){
     const objRow = document.all("tbshow").insertRow();
@@ -178,15 +179,15 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       var addrow;
       if(i==0){
         addrow = objRow.insertCell();
-        addrow.innerHTML="<img src='../../../resources/icons/삭제아이콘.png' alt='삭제' onclick='deleteList(this)'>"
+        addrow.innerHTML="<img src='resources/common/포스기_삭제 아이콘' alt='삭제' onclick='deleteList(this)'>"
 
       }else if(i == 3){
         addrow = objRow.insertCell();
-        const num = test.cells[i-1].innerHTML; 
+        const num = test.cells[i-1].innerHTML;
         addrow.innerHTML = "<input type='text' onchange='priceCount()' value ='"+ num +"'>";
       }else{
         addrow = objRow.insertCell();
-        addrow.innerHTML = test.cells[i-1].innerHTML; 
+        addrow.innerHTML = test.cells[i-1].innerHTML;
       }
     }
 
@@ -197,7 +198,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   function deleteList(this_tb){
     const test = this_tb.closest('tr');
     test.remove();
-    
+
     priceCount();
 
   }
@@ -206,7 +207,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     const table = document.getElementById('tbshow').getElementsByTagName('tr')
     const total = document.getElementById('totalcount');
     var sum =0;
-    
+
 
     for(i=0;i<table.length;i++){
       var cnt = table[i].cells[3].querySelector('input').value;

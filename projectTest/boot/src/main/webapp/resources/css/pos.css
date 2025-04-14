@@ -49,7 +49,7 @@
 }
 .searchBar-div {
   display: flex;
-  
+
   align-items: center;
   background-color: white;
   border: 1px solid #6b6b6b;
@@ -98,12 +98,12 @@ td > img:hover{
   width: calc(100% - 20px);
   border: 1px solid #6b6b6b;
   border-collapse: collapse;
-  margin: 10px; 
+  margin: 10px;
 }
 
 
 .item-table thead, .item-table tbody {
-  display: table; 
+  display: table;
   width: 100%;
 }
 
@@ -127,23 +127,23 @@ td > img:hover{
   width: calc(100% - 20px);
 }
 
-  .item-table th:nth-child(1), 
+  .item-table th:nth-child(1),
   .item-table td:nth-child(1) {
     width: 10%;
    }
-   .item-table th:nth-child(2), 
+   .item-table th:nth-child(2),
    .item-table td:nth-child(2) {
      width: 40%;
     }
-    .item-table th:nth-child(3), 
+    .item-table th:nth-child(3),
     .item-table td:nth-child(3) {
      width: 10%;
     }
-    .item-table th:nth-child(4), 
+    .item-table th:nth-child(4),
     .item-table td:nth-child(4) {
      width: 15%;
     }
-    .item-table th:nth-child(5), 
+    .item-table th:nth-child(5),
     .item-table td:nth-child(5) {
      width: 15%;
     }
@@ -178,21 +178,20 @@ td > img:hover{
   display: flex;
   color: white;
   justify-content: center;
-  
+
   margin-top: 4px;
 }
 
 .enter-title{
   width: 110px;
-  height: inherit;
-  text-align: center;
-  line-height: 100px;
-  border: 1px solid #d9d9d9;
-  border-right: 2px solid #d9d9d9;
-  background-color: #636060;
-  font-size: 15px;
+ gap: 2px;
+
 }
 
+.enter-title > img {
+  width: 100px;
+  height: 100px;
+}
 
 .enter-content{
   display: flex;
@@ -272,7 +271,7 @@ td > img:hover{
 .payTable-outer{
   width: calc(100% - 10px);
   height: 100%;
-  margin: 0px auto; 
+  margin: 0px auto;
 }
 
 .payTable {
@@ -280,7 +279,7 @@ td > img:hover{
   border: 1px solid #6b6b6b;
   border-collapse: collapse;
   margin: 10px;
- 
+
 }
 
 .payTable thead, .payTable tbody {

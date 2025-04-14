@@ -40,7 +40,7 @@
 						<c:choose>
 							<c:when test="${not empty b.originName }">
 								<!-- case1 -->
-                        		<a href="${b.changeName }" download="${b.originName }">${b.originName }</a>
+                        		<a href="${b.changeName}" download="${b.originName }">${b.originName }</a>
                         	</c:when>
                         	<c:otherwise>
 								<!-- case2 -->
