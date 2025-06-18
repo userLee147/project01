@@ -12,8 +12,7 @@ export const Wrap = styled.div`
 `;
 
 export const CommonBtn = styled(Link)`
-  padding: 10px 40px;
-  margin: 5px;
+  padding: 10px 45px;
   border: 1px solid #ff5100;
   border-radius: 8px;
   color: #ff5100;
@@ -86,7 +85,6 @@ export const NavButton = styled.button`
  background-color: white;
   padding: 16px 0px 16px 0;
   margin: 10px;
-  backgroud : white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,7 +108,5 @@ justify-content: space-between;
   height: 60px;       // 적절한 높이 설정
   background-color: white; // 배경 설정 (스크롤 시 투명하면 안 보일 수 있음)
   z-index: 1000;      // 다른 요소보다 위에 표시
-
-
 
 `

@@ -51,15 +51,20 @@ const useUserStore = create((set, get) => ({
     .catch((error) => error)
   },
 
-  updateUser: async (id, updateUser) => {
-    set({ loading: true, error: null });
-    try {
-     await axios.patch(`http://localhost:3001/usersDB/${id}`,{...updateUser, log : false} );
-  
-    } catch (error) {
-      set({error :null})
-    }
+  updateUser: async (updateUser) => {
+    const id = updateUser.id
+     await axios.patch(`http://localhost:3001/usersDB/${id}`,{...updateUser} );
+
   },
+  getUser : async (id) => {
+    const res = await axios.patch(`http://localhost:3001/usersDB/${id}`)
+    const user = res.data[0]
+    set({ currentUser : { ...user, log: true }, error: null });
+  },
+
+  deleteUser : async (id) => {
+      await axios.delete(`http://localhost:3001/usersDB/${id}`)
+  }
 }));
 
 export default useUserStore;

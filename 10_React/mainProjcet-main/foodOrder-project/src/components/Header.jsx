@@ -28,6 +28,7 @@ const Header = ({currentUser}) => {
                     </CircleBtn>
                   </Container>
                 ) : (
+                  
                   <LoginBtn to="/login">
                     로그인을 해주세요 <IoMdLogIn size={30}></IoMdLogIn>
                   </LoginBtn>

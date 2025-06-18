@@ -11,6 +11,7 @@ import MenuOrder from './pages/MenuOrder';
 import UserPage from './pages/UserPage';
 import UserEdit from './pages/UserEdit';
 import OrderList from './pages/OrderList';
+import Modal from './components/Modal';
 function App() {
   return (
     <>
@@ -26,7 +27,7 @@ function App() {
           <Route path="/menu" element={<MenuList />} />
           <Route path="/order" element={<MenuOrder />} />
           <Route path="/order/:id" element={<OrderList />} />
-
+          <Route path="/modal" element={<Modal />} />
           {/*<Route path="*" element={<NotFound />} /> } */}
         </Routes>
       </BrowserRouter>

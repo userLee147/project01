@@ -7,6 +7,7 @@ import useUserStore from '../store/UserStore';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Wrap } from '../styled/common';
+import Header from '../components/Header';
 
 
 
@@ -84,6 +85,7 @@ const UserRegistration = () => {
 
   return (
     <Wrap>
+      <Header></Header>
         <FormWrapper onSubmit={handleSubmit(onSumbit)}>
       <label>ID</label>
       <input type="text" {...register('id')} />

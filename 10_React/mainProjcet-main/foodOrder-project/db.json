@@ -30,15 +30,15 @@
       "email": "user4@gmail.com",
       "age": 15,
       "name": "user4",
-      "log": false
+      "log": true
     },
     {
       "id": "user5",
       "pwd": "user5",
       "email": "user5@gmail.com",
-      "age": 35,
-      "name": "user5",
-      "log": false
+      "age": 50,
+      "name": "user55",
+      "log": true
     },
     {
       "id": "user6",
@@ -55,6 +55,7 @@
       "category": "샐러드",
       "name": "와사비&크래미샐러드",
       "price": 7800,
+      "halfPrice" : 4000,
       "img": "././public/img/와사비크래미샐러드.jpg",
       "description": "부드러운 크래미가 들어간 영양만점 샐러드"
     },
@@ -63,6 +64,7 @@
       "category": "샐러드",
       "name": "단호박샐러드",
       "price": 7800,
+      "halfPrice" : 4000,
       "img": "././public/img/단호박샐러드.jpg",
       "description": "달콤한 단호박 무스가 들어간 영양만점 샐러드"
     },
@@ -71,6 +73,7 @@
       "category": "샐러드",
       "name": "치킨텐더샐러드",
       "price": 8000,
+      "halfPrice" : 4200,
       "img": "././public/img/치킨텐더샐러드.jpg",
       "description": "바삭바삭한 치킨텐더가 들어간 영양만점 샐러드"
     },
@@ -79,6 +82,7 @@
       "category": "샐러드",
       "name": "크렌베리닭가슴살샐러드",
       "price": 8500,
+      "halfPrice" : 4700,
       "img": "././public/img/닭가슴살샐러드.jpg",
       "description": "다이어트에 딱 좋은 닭가슴살이 들어간 영양만점 샐러드"
     },
@@ -87,6 +91,7 @@
       "category": "샐러드",
       "name": "함박스테이크샐러드",
       "price": 8500,
+      "halfPrice" : 4700,
       "img": "././public/img/함박스테이크샐러드.jpg",
       "description": "든든한 소고기로 만든 함박스테이크가 들어간 영양만점 샐러드"
     },
@@ -95,6 +100,7 @@
       "category": "샌드위치",
       "name": "햄치즈에그샌드위치",
       "price": 6500,
+      "halfPrice" : 3500,
       "img": "././public/img/햄치즈에그.jpg",
       "description": "햄+치즈+에그 환상조화 든든 샌드위치"
     },
@@ -103,6 +109,7 @@
       "category": "샌드위치",
       "name": "와사비&크래미샌드위치",
       "price": 6800,
+      "halfPrice" : 3700,
       "img": "././public/img/크래미와사비.jpg",
       "description": "부들부들한 크래미 가득 샌드위치"
     },
@@ -111,6 +118,7 @@
       "category": "샌드위치",
       "name": "단호박샌드위치",
       "price": 6800,
+      "halfPrice" : 3700,
       "img": "././public/img/단호박.jpg",
       "description": "달콤한 단호박 무스로 사르르 샌드위치"
     },
@@ -119,6 +127,7 @@
       "category": "샌드위치",
       "name": "치킨텐더샌드위치",
       "price": 7000,
+      "halfPrice" : 4100,
       "img": "././public/img/치킨텐더.jpg",
       "description": "겉바속촉한 치킨텐더 쏙쏙 샌드위치"
     },
@@ -127,6 +136,7 @@
       "category": "샌드위치",
       "name": "크렌베리닭가슴살샌드위치",
       "price": 7500,
+      "halfPrice" : 4200,
       "img": "././public/img/닭가슴살.jpg",
       "description": "프레시함의 정석 다이어터 샌드위치"
     },
@@ -135,6 +145,7 @@
       "category": "샌드위치",
       "name": "함박스테이크샌드위치",
       "price": 8500,
+      "halfPrice" : 4300,
       "img": "././public/img/함박스테이크.jpg",
       "description": "든든한 한끼 포만감 만점 샌드위치"
     }
@@ -152,20 +163,23 @@
       "drink": "1000",
       "option": "1500",
       "sandwich": "햄치즈에그",
-      "totalPrice": 120000
+      "totalPrice": 120000,
+      "status": "예약접수"
     },
     {
-      "id": "7df2",
-      "date": "2025-05-08",
-      "address": "서울 강남구",
-      "option": true,
-      "drink": true,
-      "sandwich": true,
+      "id": "1",
+      "user": "user1",
+      "address": "서울 강남구 강남역",
+      "date": "2025-05-16",
+      "email": "user0@naver.com",
+      "name": "user11",
+      "phone": "01022222222",
       "quantity": 20,
-      "email": "user1@gmail.com",
-      "phone": "01011111111",
-      "name": "user1",
-      "user": "user1"
+      "drink": "1000",
+      "option": "1500",
+      "sandwich": "햄치즈에그",
+      "totalPrice": 120000,
+      "status": "예약확정(미입금)"
     },
     {
       "id": "b43d",
@@ -179,7 +193,8 @@
       "phone": "01022222222",
       "name": "user1",
       "user": "user1",
-      "totalPrice": 150000
+      "totalPrice": 150000,
+      "status": "주문완료(입금완료)"
     }
   ]
 }

@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useLocation, useNavigate } from 'react-router-dom';
 import useUserStore from '../store/UserStore';
-import { BounceLoader } from 'react-spinners';
+import Modal from '../components/Modal';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { Wrap } from '../styled/common';
+import TitleHeardr from '../components/TitleHeardr';
 
 // yup 스키마
 const schema = yup.object().shape({
@@ -21,19 +22,15 @@ const schema = yup.object().shape({
 });
 
 const UserEdit = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const currentUser = location.state;
-  const {updateUser} = useUserStore();
-
-  const [loading, setLoading] = useState(true);
-
-
+  const { currentUser, updateUser } = useUserStore();
+  const [update, setUpdate] = useState(false);
 
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -51,53 +48,77 @@ const UserEdit = () => {
       setValue('email', currentUser.email || '');
       setValue('pwd', currentUser.pwd || '');
     }
-  }, [currentUser, setValue, navigate]);
+  }, [currentUser, setValue]);
 
   const onSubmit = async (data) => {
     try {
-      await updateUser(currentUser.id, { ...currentUser, ...data });
-      alert('정보가 수정되었습니다! 다시로그인 해주세요');
-      navigate('/');
+      console.log(data,",",currentUser)
+      await updateUser({ ...currentUser, ...data });
+      setUpdate(!update);
     } catch (error) {
       alert('정보 수정 중 오류가 발생했습니다.');
       console.error('❌ 업데이트 실패:', error);
     }
   };
+const handleSetUpdae = (e) => {
+e.preventDefault()
+setUpdate(true)
+}
 
+const handeReset = () =>{
+  reset(
+    {
+      name : currentUser.name,
+      age : currentUser.age,
+      email : currentUser.email,
+      pwd : currentUser.pwd
+    }
+  )
+  setUpdate(false)
+}
 
-
+  const [isModal, setIsModal] = useState(false);
   return (
     <>
- 
+      <Wrap>
+        <TitleHeardr></TitleHeardr>
+      {isModal && <Modal setIsModal={setIsModal}></Modal>
+      }
+      {console.log(isModal)}
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-      <h2>개인정보 수정</h2>
+          <h2>개인정보 수정</h2>
+          이름 <input type="text" {...register('name')} readOnly={!update} />
+          {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
+          나이 <input type="number" {...register('age')} readOnly={!update} />
+          {errors.age && <ErrorText>{errors.age.message}</ErrorText>}
+          이메일 <input type="email" {...register('email')} readOnly={!update} />
+          {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+          비밀번호 <input type="password" {...register('pwd')} readOnly />
+          {errors.pwd && <ErrorText>{errors.pwd.message} </ErrorText>}
+          <div>
+            {update ? (
+              <>
+                <button type="submit">수정완료</button>
+                <button type="button" onClick={handeReset}>
+                  수정취소
+                </button>
+              </>
+            ) : (
+              <>
+              {/* 클릭시에 onSubmit 이벤트가 실행되어서 다른 이벤트 확산 방지를 위해 아래와 같이 event 객체를 넘겨서 확산을 방지해야함 */}
+                <button type="button" onClick={(e) => handleSetUpdae(e)}>
+                  수정하기
+                </button>
+                <button type="button" onClick={() => setIsModal(true)}>
+                  탈퇴하기
+                </button>
+              </>
+            )}
+          </div>
+        </FormWrapper>
 
-      <label>이름</label>
-      <input type="text" {...register('name')} />
-      {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
-
-      <label>나이</label>
-      <input type="number" {...register('age')} />
-      {errors.age && <ErrorText>{errors.age.message}</ErrorText>}
-
-      <label>이메일</label>
-      <input type="email" {...register('email')} />
-      {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
-
-      <label>비밀번호</label>
-      <input type="password" {...register('pwd')} />
-      {errors.pwd && <ErrorText>{errors.pwd.message}</ErrorText>}
-
-      <button type="submit">수정하기</button>
-    </FormWrapper>
-
-
+      </Wrap>
     </>
-
-
-
-
-
   );
 };
 
@@ -115,6 +136,10 @@ const FormWrapper = styled.form`
     padding: 8px;
     border: 1px solid #cccccc;
     border-radius: 4px;
+  }
+
+  input:read-only {
+    background-color: #cccccc;
   }
 
   button {

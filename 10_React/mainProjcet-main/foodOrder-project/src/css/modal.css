@@ -1,0 +1,29 @@
+.modalWrap{
+  background-color: rgba(128, 128, 128, 0.312);
+  width: inherit;
+  min-height: 100vh;
+  display: flex;
+  position: absolute;
+  left: 0;
+  
+}
+.modalDiv{
+  background-color: white;
+  width: 200px;
+  border-radius: 8px;
+  margin: auto;
+} 
+.modalHeader{
+  margin: 0px 10px;
+  text-align: right;
+}
+.modalContent{
+  margin: 10px;
+}
+.modalBtnDiv{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px;
+
+}
