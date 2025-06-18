@@ -1,0 +1,33 @@
+#root {
+  width: 600px;
+  /* height: 100vh; */
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: border-box;
+  margin : 0;
+  padding: 0;
+}
+
+body{
+  width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  
+}
+
+button :hover {
+  border: none;
+}
+
+button :focus {
+  border: none;
+  background-color: aliceblue;
+}
